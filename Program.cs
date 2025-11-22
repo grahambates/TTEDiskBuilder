@@ -36,6 +36,20 @@ namespace TTEDiskBuilder
             Console.WriteLine(@"//____|::::::.eLITE::.________________fZn_//");
             Console.WriteLine();
 
+            if (args.Length == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ERROR: No folder path provided!");
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine("Usage: DiskBuild <folder-path>");
+                Console.WriteLine();
+                Console.WriteLine("The folder must contain:");
+                Console.WriteLine("  - disk.json (configuration file)");
+                Console.WriteLine("  - bootblock (binary file)");
+                return;
+            }
+
             var folder = args[0];
             Console.WriteLine($"Opening folder - {folder}");
 
@@ -279,7 +293,7 @@ namespace TTEDiskBuilder
         public static void ZXPack(string filename)
         {
             var p = new Process();
-            p.StartInfo.FileName = "zx0.exe";
+            p.StartInfo.FileName = "zx0";
             p.StartInfo.Arguments = $"\"{filename}\" \"{filename}.zx0\"";
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.CreateNoWindow = true;
@@ -299,7 +313,7 @@ namespace TTEDiskBuilder
         public static void ApultaPack(string filename)
         {
             var p = new Process();
-            p.StartInfo.FileName = "apultra.exe";
+            p.StartInfo.FileName = "apultra";
             p.StartInfo.Arguments = $"\"{filename}\" \"{filename}.ap\"";
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.CreateNoWindow = true;
@@ -333,8 +347,8 @@ namespace TTEDiskBuilder
             File.WriteAllBytes(infile, data);
 
             var p = new Process();
-            //p.StartInfo.FileName = "zx0.exe";
-            p.StartInfo.FileName = "salvador.exe";
+            //p.StartInfo.FileName = "zx0";
+            p.StartInfo.FileName = "salvador";
 
             p.StartInfo.Arguments = $"\"{infile}\" \"{outfile}\"";
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -383,7 +397,7 @@ namespace TTEDiskBuilder
             File.WriteAllBytes(infile, data);
 
             var p = new Process();
-            p.StartInfo.FileName = "zopfli.exe";
+            p.StartInfo.FileName = "zopfli";
             p.StartInfo.Arguments = $"--deflate \"{infile}\"";
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.CreateNoWindow = true;
@@ -432,7 +446,7 @@ namespace TTEDiskBuilder
             File.WriteAllBytes(infile, data);
 
             var p = new Process();
-            p.StartInfo.FileName = "shrinkler.exe";
+            p.StartInfo.FileName = "shrinkler";
             p.StartInfo.Arguments = $"-d \"{infile}\" \"{outfile}\"";
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.CreateNoWindow = true;

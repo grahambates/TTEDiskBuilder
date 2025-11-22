@@ -1,6 +1,8 @@
 # TTE Disk Builder
 
-Simple C# console app which builds a bootable floppy disk image based on a json file
+Cross-platform C# console app (.NET 9) which builds a bootable floppy disk image based on a json file
+
+**Platforms:** Windows, macOS, Linux
 
 Pass the app the folder where the disk is to be built from.
 
@@ -8,11 +10,15 @@ The folder must contain a ```disk.json``` and a ```bootblock``` binary file.
 
 The app will write a ```final.adf``` in the folder.
 
-The following packer executables need to be available either in the folder or via a path.
+## Requirements
 
-* Shrinkler -> https://github.com/askeksa/Shrinkler
-* ZX0 (Salvador) -> https://github.com/emmanuel-marty/salvador
-* Zopfli (Deflate) -> ????
+The following packer executables need to be available either in your system PATH or in the build folder:
+
+* **Shrinkler** - https://github.com/askeksa/Shrinkler
+* **Salvador** (ZX0) - https://github.com/emmanuel-marty/salvador
+* **Zopfli** (Deflate) - https://github.com/google/zopfli
+
+**Note:** Ensure you download and install the appropriate version for your platform (Windows, macOS, or Linux).
 
 Example json
 
